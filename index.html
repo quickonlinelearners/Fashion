@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QOL Fashion - Modern Apparel for Every Occasion</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Raleway:wght@300;600&display=swap" rel="stylesheet">
+    <style>
+        /* --- General Styling & Font Setup --- */
+        :root {
+            --primary-color: #3a868f; /* Deep Teal/Green */
+            --secondary-color: #ff9770; /* Soft Peach/Coral Accent */
+            --dark-text: #333333;
+            --light-bg: #f8f8f8;
+            --body-font: 'Raleway', sans-serif;
+            --header-font: 'Montserrat', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--body-font);
+            color: var(--dark-text);
+            background-color: var(--light-bg);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 {
+            font-family: var(--header-font);
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+            transition: color 0.3s;
+        }
+
+        a:hover {
+            color: var(--secondary-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            margin-top: 20px;
+            border-radius: 2px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: background-color 0.3s, color 0.3s;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--secondary-color);
+            border-color: var(--secondary-color);
+            color: var(--dark-text);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background-color: white;
+            color: var(--primary-color);
+        }
+
+        /* --- Header & Navigation --- */
+        header {
+            background-color: white;
+            padding: 15px 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.6em;
+            font-family: var(--header-font);
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        nav a {
+            color: var(--dark-text);
+            margin-left: 25px;
+            font-weight: 400;
+            text-transform: uppercase;
+            font-size: 0.9em;
+        }
+
+        /* --- Hero Section --- */
+        #hero {
+            background: url('https://via.placeholder.com/1920x650/444444/ffffff?text=QOL+Fashion+New+Collection') center/cover no-repeat;
+            color: white;
+            height: 65vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        #hero-content {
+            position: relative;
+            z-index: 10;
+            padding-left: 50px;
+        }
+
+        #hero h1 {
+            font-size: 3.5em;
+            margin-bottom: 10px;
+        }
+
+        #hero p {
+            font-size: 1.3em;
+            font-weight: 300;
+            margin-bottom: 20px;
+        }
+
+        /* --- Section Styling --- */
+        section {
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 2.2em;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        .section-subtitle {
+            font-size: 1.1em;
+            margin-bottom: 40px;
+            color: #777;
+        }
+
+        /* --- Product Grid --- */
+        #products .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .product-card {
+            background: white;
+            border: 1px solid #eee;
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+        }
+
+        .product-info {
+            padding: 15px;
+        }
+
+        .product-info h3 {
+            font-size: 1.1em;
+            margin-bottom: 5px;
+            color: var(--dark-text);
+        }
+
+        .product-info p {
+            font-weight: 600;
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+        }
+
+        .product-info a {
+            display: block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 8px;
+            border-radius: 2px;
+            font-size: 0.9em;
+            text-transform: uppercase;
+        }
+        
+        .product-info a:hover {
+            background-color: var(--secondary-color);
+            color: var(--dark-text);
+        }
+
+        /* --- Features Section (Small Icons/Info) --- */
+        #features {
+            background-color: white;
+            padding: 40px 0;
+            border-top: 1px solid #eee;
+        }
+
+        #features .feature-grid {
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+        }
+
+        .feature-item {
+            flex-basis: 30%;
+        }
+        
+        .feature-item h3 {
+            font-size: 1.2em;
+            color: var(--primary-color);
+            margin-top: 5px;
+        }
+
+        /* --- Footer --- */
+        footer {
+            background-color: var(--dark-text);
+            color: #ccc;
+            padding: 40px 0;
+            font-size: 0.9em;
+        }
+
+        footer h3 {
+            color: white;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+
+        footer .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 2fr;
+            gap: 40px;
+            text-align: left;
+        }
+        
+        footer ul {
+            list-style: none;
+        }
+        
+        footer ul li {
+            margin-bottom: 8px;
+        }
+        
+        footer a {
+            color: #ccc;
+        }
+        
+        footer a:hover {
+            color: var(--secondary-color);
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 15px;
+            border-top: 1px solid #444;
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <a href="#hero" class="logo">QOL Fashion</a>
+            <nav>
+                <a href="#products">Shop</a>
+                <a href="#collection">New Arrivals</a>
+                <a href="#about">About</a>
+                <a href="#">Account</a>
+                <a href="#">[Cart Icon]</a>
+            </nav>
+        </div>
+    </header>
+
+    <section id="hero">
+        <div class="container">
+            <div id="hero-content">
+                <h1>The New Capsule Collection is Here</h1>
+                <p>Timeless quality, contemporary designs. Elevate your everyday style.</p>
+                <a href="#products" class="btn btn-secondary">Shop Now</a>
+            </div>
+        </div>
+    </section>
+    
+    <section id="features">
+        <div class="container">
+            <div class="feature-grid">
+                <div class="feature-item">
+                    [Icon: Fast Shipping]
+                    <h3>Fast Shipping</h3>
+                    <p>Free delivery on all orders over $75.</p>
+                </div>
+                <div class="feature-item">
+                    [Icon: Return Policy]
+                    <h3>Easy Returns</h3>
+                    <p>30-day no-hassle return policy.</p>
+                </div>
+                <div class="feature-item">
+                    [Icon: Quality]
+                    <h3>Premium Quality</h3>
+                    <p>Ethically sourced and made to last.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="products">
+        <div class="container">
+            <h2>Best Sellers</h2>
+            <p class="section-subtitle">Our top-rated items loved by customers.</p>
+            <div class="product-grid">
+                
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/400x350?text=Ribbed+Knit+Sweater" alt="Ribbed Knit Sweater">
+                    <div class="product-info">
+                        <h3>Ribbed Knit Sweater</h3>
+                        <p>$79.99</p>
+                        <a href="#">View Details</a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/400x350?text=High-Waist+Denim" alt="High-Waist Denim">
+                    <div class="product-info">
+                        <h3>High-Waist Denim</h3>
+                        <p>$59.50</p>
+                        <a href="#">View Details</a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/400x350?text=Classic+Trench+Coat" alt="Classic Trench Coat">
+                    <div class="product-info">
+                        <h3>Classic Trench Coat</h3>
+                        <p>$129.00</p>
+                        <a href="#">View Details</a>
+                    </div>
+                </div>
+                
+                 <div class="product-card">
+                    <img src="https://via.placeholder.com/400x350?text=Essential+White+Tee" alt="Essential White Tee">
+                    <div class="product-info">
+                        <h3>Essential White Tee</h3>
+                        <p>$29.99</p>
+                        <a href="#">View Details</a>
+                    </div>
+                </div>
+                
+            </div>
+            <a href="#" class="btn btn-primary">Browse All Apparel</a>
+        </div>
+    </section>
+
+    <section id="collection">
+        <div class="container">
+            <h2>The Sustainable Line</h2>
+            <p class="section-subtitle">Consciously crafted clothing made from recycled and organic materials.</p>
+            <a href="#" class="btn btn-primary">Discover Sustainability</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h3>QOL Fashion</h3>
+                    <p>Modern clothing designed for longevity and effortless style. Join our community for exclusive early access and discounts.</p>
+                </div>
+                
+                <div>
+                    <h3>Shop</h3>
+                    <ul>
+                        <li><a href="#">New Arrivals</a></li>
+                        <li><a href="#">Women's</a></li>
+                        <li><a href="#">Men's</a></li>
+                        <li><a href="#">Sale</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3>Help</h3>
+                    <ul>
+                        <li><a href="#">FAQs</a></li>
+                        <li><a href="#">Shipping Policy</a></li>
+                        <li><a href="#">Returns & Exchanges</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3>Connect</h3>
+                    <p>Subscribe to our newsletter:</p>
+                    [Email Subscription Form Placeholder]
+                    <p style="margin-top: 15px;">[Social Media Icons: Instagram, Facebook, Pinterest]</p>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2025 QOL Fashion. All Rights Reserved. | Privacy Policy
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
